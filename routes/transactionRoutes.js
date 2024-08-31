@@ -1,4 +1,5 @@
 const express = require("express");
+const axios = require("axios");
 const transactionController = require("../controllers/transactionController.js");
 
 const router = express.Router();
@@ -20,7 +21,9 @@ router.get("/", async (req, res) => {
       message: "KoinX Backend Assignment",
       Etherium: "Rs. " + response.data.ethereum.inr,
     });
-  } catch (error) {}
+  } catch (error) {
+    return res.json({ Error: error });
+  }
 });
 router.get("/transactions/:address", transactionController.getTransactions);
 
