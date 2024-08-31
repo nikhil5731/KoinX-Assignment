@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
     }
     return res.json({
       message: "KoinX Backend Assignment",
-      Etherium: "Rs. " + response.data.ethereum.inr,
+      Etherium: "Rs." + response.data.ethereum.inr,
     });
   } catch (error) {
     return res.json({ Error: error });
