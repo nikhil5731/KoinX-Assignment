@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
 
     return res.json({
       message: "KoinX Backend Assignment",
-      Etherium: transactions[0].price
+      Ethereum: transactions[0].price
         ? "Rs." + transactions[0].price
         : "Not Found in Database!",
     });

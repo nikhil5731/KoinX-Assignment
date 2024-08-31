@@ -1,21 +1,16 @@
 # Ethereum Transaction and Expense Tracking API
 
 ## Table of Contents
+
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Prerequisites](#prerequisites)
 4. [Installation](#installation)
 5. [Configuration](#configuration)
-6. [Usage](#usage)
-7. [API Endpoints](#api-endpoints)
-8. [Database Schema](#database-schema)
-9. [Background Jobs](#background-jobs)
-10. [Error Handling](#error-handling)
-11. [Testing](#testing)
-12. [Deployment](#deployment)
-13. [Future Improvements](#future-improvements)
-14. [Contributing](#contributing)
-15. [License](#license)
+6. [API Endpoints](#api-endpoints)
+7. [Database Schema](#database-schema)
+8. [Background Jobs](#background-jobs)
+9. [Future Improvements](#future-improvements)
 
 ## Introduction
 
@@ -37,6 +32,7 @@ This project is a Node.js-based API that fetches and stores Ethereum transaction
 ## Installation
 
 1. Clone the repository:
+
    ```
    git clone https://github.com/yourusername/ethereum-transaction-api.git
    cd ethereum-transaction-api
@@ -50,6 +46,7 @@ This project is a Node.js-based API that fetches and stores Ethereum transaction
 ## Configuration
 
 1. Create a `.env` file in the root directory with the following content:
+
    ```
    PORT=3000
    MONGODB_URI=mongodb://localhost:27017/ethereum_transactions
@@ -58,23 +55,10 @@ This project is a Node.js-based API that fetches and stores Ethereum transaction
 
 2. Replace `your_etherscan_api_key` with your actual Etherscan API key.
 
-## Usage
-
-To start the server:
-
-```
-npm start
-```
-
-For development with auto-reloading:
-
-```
-npm run dev
-```
-
 ## API Endpoints
 
 1. **Fetch Transactions**
+
    - Endpoint: `GET /api/transactions/:address`
    - Description: Fetches and stores transactions for the given Ethereum address
    - Parameters:
@@ -91,14 +75,26 @@ npm run dev
      {
        "address": "0x...",
        "totalExpenses": "0.123456789",
-       "currentEtherPrice": 150000.00,
+       "currentEtherPrice": 150000.0,
        "currency": "INR"
      }
      ```
+3. **Get Current Ethereum Price**
+
+- Endpoint: `GET /api/`
+- Description: Current Ethereum Price
+- Response:
+  ```json
+  {
+    "message": "KoinX Backend Assignment",
+    "Ethereum": "Rs.209593"
+  }
+  ```
 
 ## Database Schema
 
 ### Transaction Schema
+
 ```javascript
 {
   address: String,
@@ -115,6 +111,7 @@ npm run dev
 ```
 
 ### EthereumPrice Schema
+
 ```javascript
 {
   price: Number,
@@ -126,26 +123,6 @@ npm run dev
 
 The API runs a background job to fetch the current Ethereum price every 10 seconds (configurable). This job is initiated when the server starts.
 
-## Error Handling
-
-The API includes basic error handling for invalid inputs, API errors, and database errors. Errors are logged to the console and appropriate error responses are sent to the client.
-
-## Testing
-
-To run tests (assuming you have set up tests):
-
-```
-npm test
-```
-
-## Deployment
-
-This API can be deployed to various cloud platforms. Here are general steps for deployment:
-
-1. Set up a MongoDB instance (e.g., MongoDB Atlas)
-2. Update the `MONGODB_URI` in your environment variables
-3. Deploy the Node.js application to your preferred platform (e.g., Heroku, AWS, GCP)
-4. Ensure all environment variables are set in your deployment environment
 
 ## Future Improvements
 
@@ -154,11 +131,3 @@ This API can be deployed to various cloud platforms. Here are general steps for 
 - Implement caching to reduce API calls and improve performance
 - Add more comprehensive error handling and logging
 - Implement rate limiting to prevent API abuse
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License.
