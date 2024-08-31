@@ -1,25 +1,19 @@
 const express = require("express");
 const axios = require("axios");
 const transactionController = require("../controllers/transactionController.js");
+const EthereumPrice = require("../models/ethereumPrice.js");
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const response = await axios.get(
-      "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=inr"
-    );
+    const transactions = await EthereumPrice.find();
 
-    if (
-      !response.data ||
-      !response.data.ethereum ||
-      !response.data.ethereum.inr
-    ) {
-      throw new Error("Invalid response from CoinGecko API");
-    }
     return res.json({
       message: "KoinX Backend Assignment",
-      Etherium: "Rs." + response.data.ethereum.inr,
+      Etherium: transactions[0].price
+        ? "Rs." + transactions[0].price
+        : "Not Found in Database!",
     });
   } catch (error) {
     return res.json({ Error: error });
