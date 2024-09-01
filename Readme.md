@@ -121,7 +121,7 @@ This project is a Node.js-based API that fetches and stores Ethereum transaction
 
 ## Background Jobs
 
-The API runs a background job to fetch the current Ethereum price every 10 seconds (configurable). This job is initiated when the server starts.
+The API runs a background job to fetch the current Ethereum price every 10 minutes (configurable). This job is initiated when the server starts.
 
 
 ## Future Improvements
